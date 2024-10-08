@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自動MDT作成ツール</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        label {
+            margin-right: 10px;
+        }
+        .output {
+            margin-top: 20px;
+            font-weight: bold;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>自動MDT作成ツール</h1>
+
+    <form id="mdtForm">
+        <label for="task1">タスク1</label>
+        <input type="checkbox" id="task1" name="task1"><br>
+
+        <label for="task2">タスク2</label>
+        <input type="checkbox" id="task2" name="task2"><br>
+
+        <label for="task3">タスク3</label>
+        <input type="checkbox" id="task3" name="task3"><br>
+
+        <button type="button" onclick="generateOutput()">完了</button>
+    </form>
+
+    <div class="output" id="outputText"></div>
+
+    <script>
+        function generateOutput() {
+            const task1 = document.getElementById('task1').checked;
+            const task2 = document.getElementById('task2').checked;
+            const task3 = document.getElementById('task3').checked;
+            
+            let output = '選択されたタスク: ';
+            
+            if (task1) output += 'タスク1 ';
+            if (task2) output += 'タスク2 ';
+            if (task3) output += 'タスク3 ';
+            
+            if (!task1 && !task2 && !task3) {
+                output = 'タスクが選択されていません。';
+            }
+            
+            document.getElementById('outputText').textContent = output;
+        }
+    </script>
+
+</body>
+</html>
